@@ -28,11 +28,12 @@
 				margin: 0.2em;
 			}
 
-			h1, h2, h3, h4, a, p, li {
-				background-color: rgba(255,255,255,0.8);
+			h1, h2, h3, h4, p, li {
+				background-color: rgba(255,255,255,0.85);
 			}
 
 			html body {
+				background: black;
 				-webkit-transition: background 0.5s linear;
 				-moz-transition: background 0.5s linear;
 				-o-transition: background 0.5s linear;
@@ -45,7 +46,8 @@
 				left: 01.em;
 				font-size: smaller;
 				font-family: "Open Sans",sans-serif;
-				color: #333333;
+				color: grey;
+				background:;
 				text-decoration: none;
 				z-index: 100;
 			}
@@ -100,7 +102,7 @@
 
 				<style>
 					html.state2 body {
-						background:url("images/img10.jpg");
+						background:url("images/img10.jpg") black;
 					}
 				</style>
 				<section data-state="state2"
@@ -110,24 +112,23 @@
 					## IMO
 
 					* Not on TC-39, not speaking for Mozilla
-					* My origins: RequireJS/AMD
+					* My origins: RequireJS, AMD
 					* Just a simple plumber
 				</script></section>
 
-				<style>html.state3 body { background:url("images/img13.jpg");}</style>
+				<style>html.state3 body { background:url("images/img13.jpg")  black;}</style>
 				<section data-state="state3"
 					data-attr-desc="Marcos Teixeira de Freitas"
-					data-attr="http://www.flickr.com/photos/imortal/8305279096/
-"
+					data-attr="http://www.flickr.com/photos/imortal/8305279096/"
 					data-markdown><script type="text/template">
-					## ECMAScript (ES) Known Lands
+					## The Known Lands
 
 					* [Module Syntax](http://wiki.ecmascript.org/doku.php?id=harmony:modules)
 					* [Module Loaders](http://wiki.ecmascript.org/doku.php?id=harmony:module_loaders)
-					* [Loader Psuedo-repo](https://github.com/jorendorff/js-loaders)
+					* [js-loaders](https://github.com/jorendorff/js-loaders)
 				</script></section>
 
-				<style>html.state4 body { background:url("images/img12.jpg");}</style>
+				<style>html.state4 body { background:url("images/img12.jpg")  black;}</style>
 				<section data-state="state4"
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8305286984/"
@@ -135,37 +136,28 @@
 					## ES: Module declaration
 
 					```javascript
-					// static
-					// import of default export
-					// AMD, CommonJS/Node: require('x')
+					// ! ES has important semantic diffs with AMD/CommonJS/Node analogs
+
+					// Import of default export. AMD, CommonJS/Node: require('x')
 					import x from 'x';
 
-					// non-default import from 'lib': `export let w = 3`;
-					// AMD, CommonJS/Node: require('lib').y
+					// Non-default import from 'lib'. AMD, CommonJS/Node: require('lib').y
 					import { w } from 'lib';
 
-					// named export.
-					// AMD, CommonJS/Node: exports.y
+					// Named export. AMD, CommonJS/Node: exports.y
 					export let y = ...;
-
 					// and/or
-
-					// default export.
-					// AMD: return, Node: module.exports
+					// Default export. AMD: return, Node: module.exports
 					export default function() {};
 
-					// dynamic
-					// AMD: require([something + '/z'])
-					// Node: require(something + '/z'), sync
-					System.import(something + '/z', function(z) {
-					});
+					// Dynamic
+					// AMD: require([something + '/z']) Node: require(something + '/z')? sync
+					System.import(something + '/z', function(z) {});
 
-					// ! ES has semantic diffs with
-					// AMD/CommonJS/Node analogs
 					```
 				</script></section>
 
-				<style>html.state5 body { background:url("images/img16.jpg");}</style>
+				<style>html.state5 body { background:url("images/img16.jpg")  black;}</style>
 				<section data-state="state5"
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8305235558/"
@@ -174,48 +166,65 @@
 
 					From [js-loaders](https://github.com/jorendorff/js-loaders):
 
-					* normalize - convert to absolute IDs
-					* locate - ID-to-URL/path
-					* fetch - get the contents of URL/path
-					* translate - convert source to JS
-					* instantiate - custom module translation
+					* **normalize** - IDs to normalized form
+					* **locate** - ID to URL
+					* **fetch** - get the source at URL
+					* **translate** - convert source to JS
+					* **instantiate** - custom module translation
 
-					AMD loader plugins:
+					[AMD loader plugins](http://requirejs.org/docs/plugins.html):
 
-					* normalize
-					* load - locate, fetch, translate, instantiate
+					* **normalize**
+					* **load** - locate, fetch, translate, instantiate
 				</script></section>
 
-				<style>html.state3 body { background:url("images/img13.jpg");}</style>
+				<style>html.state3 body { background:url("images/img13.jpg")  black;}</style>
 				<section data-state="state3"
 					data-attr-desc="Marcos Teixeira de Freitas"
-					data-attr="http://www.flickr.com/photos/imortal/8305279096/
-"
+					data-attr="http://www.flickr.com/photos/imortal/8305279096/"
 					data-markdown><script type="text/template">
 					## The Frontiers
 
-					Up to JS environments (browser makers, us):
+				</script></section>
+
+				<style>html.state3 body { background:url("images/img13.jpg")  black;}</style>
+				<section data-state="state3"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305279096/"
+					data-markdown><script type="text/template">
+					## JS environments
+
+					Browser makers, us
 
 					* ID normalization: './'
 					* Declarative loader config
-					* Inline module syntax (<module>, Loader.instantiate)
-
-					Up to us:
-
-					* Bridging worlds, AMD/Node
-					* Project layout/package managers
+					* Inline module syntax (&lt;module&gt; Loader.instantiate)
 				</script></section>
 
-				<style>html.state6 body { background:url("images/img14.jpg");}</style>
+
+				<style>html.state3 body { background:url("images/img13.jpg")  black;}</style>
+				<section data-state="state3"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305279096/"
+					data-markdown><script type="text/template">
+					## Up to us
+
+					* Bridging AMD, Node worlds
+					* Project layout
+					* Package managers
+				</script></section>
+
+				<style>html.state6 body { background:url("images/img14.jpg") black;}</style>
 				<section data-state="state6"
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
 					data-markdown><script type="text/template">
 					## ID normalization
 
-					* Does './', '../' mean anything?
+					* `./`
+					* `../`
 					* Allow URLs? Maybe not.
-					```
+
 				</script></section>
 
 				<section data-state="state6"
@@ -225,26 +234,34 @@
 					## Declarative loader config
 
 					* [AMD has a set](https://github.com/amdjs/amdjs-api/wiki/Common-Config)
-					* paths, map, config, packages(?)
-					* shim - a sham?
+					* paths, map, config [maybe not packages?]
+					* shim - no more? LEGACY 4EVAR
 				</script></section>
 
 				<section data-state="state6"
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
 					data-markdown><script type="text/template">
-					# Inline module syntax
+					## Inline module syntax
 
 					`module 'id' {}` would be sweet.
 
-					Alas, baby steps. Dragons. Patience.
-
-					* `<module>`: I will try to wait for `module 'id'`
-					* Loader.instantiate
+					Alas, not yet. Baby steps. Dragons. Patience.
 				</script></section>
 
+				<section data-state="state6"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
+					data-markdown><script type="text/template">
+					## Inline module syntax
 
-				<style>html.state7 body { background:url("images/img15.jpg");}</style>
+					* `<module>`, `<script type="module">`
+					* Hope to avoid, use loader
+					* `loader.define(id, srcString)`
+					* I need a shower
+				</script></section>
+
+				<style>html.state7 body { background:url("images/img15.jpg") black;}</style>
 				<section data-state="state7"
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8304189741/"
@@ -252,11 +269,11 @@
 					## Bridging worlds, AMD
 
 					* ES6->AMD:
-					* AMD->ES6: Command line tool. Trivial transform.
-					* ES6+AMD on ES6: AMD declarative config, loader.instantiate hook
+					* AMD->ES6: Command line tool, trivial transform
+					* Combo: AMD declarative config, instantiate hook
 				</script></section>
 
-				<style>html.state7 body { background:url("images/img15.jpg");}</style>
+				<style>html.state7 body { background:url("images/img15.jpg") black;}</style>
 				<section data-state="state7"
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8304189741/"
@@ -272,12 +289,13 @@
 					data-markdown><script type="text/template">
 					## Project Layout
 
-					Default ID-to-path
+					Default ID-to-URL
 
 					`baseURL + moduleID + '.js'`
 
 				</script></section>
 
+				<style>html.state14 body { background:url("images/img14.jpg") black;}</style>
 				<section data-state="state14"
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
@@ -312,7 +330,7 @@
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
 					data-markdown><script type="text/template">
-					## NPM adaptation
+					## NPM Shim
 
 					* [notobo]()
 				</script></section>
@@ -326,6 +344,14 @@
 					* [volojs/create-template](https://github.com/volojs/create-template)
 					* [volo](http://volojs.org)
 					* [front end library best practices](https://github.com/volojs/volo/wiki/Library-best-practices)
+				</script></section>
+
+
+				<section data-state="state14"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
+					data-markdown><script type="text/template">
+
 				</script></section>
 			</div>
 
