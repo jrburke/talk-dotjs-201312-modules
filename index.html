@@ -127,20 +127,6 @@
 					* [Loader Psuedo-repo](https://github.com/jorendorff/js-loaders)
 				</script></section>
 
-				<style>html.state3 body { background:url("images/img13.jpg");}</style>
-				<section data-state="state3"
-					data-attr-desc="Marcos Teixeira de Freitas"
-					data-attr="http://www.flickr.com/photos/imortal/8305279096/
-"
-					data-markdown><script type="text/template">
-					## The Frontiers
-
-					* Inline module syntax (<module>, Loader.instantiate?)
-					* ID normalization specific to env: '../'
-					* No declarative config, env has option to standardize
-					* No modules
-				</script></section>
-
 				<style>html.state4 body { background:url("images/img12.jpg");}</style>
 				<section data-state="state4"
 					data-attr-desc="Marcos Teixeira de Freitas"
@@ -173,9 +159,12 @@
 					// Node: require(something + '/z'), sync
 					System.import(something + '/z', function(z) {
 					});
+
+					// ! ES has semantic diffs with
+					// AMD/CommonJS/Node analogs
 					```
 				</script></section>
-<!--
+
 				<style>html.state5 body { background:url("images/img16.jpg");}</style>
 				<section data-state="state5"
 					data-attr-desc="Marcos Teixeira de Freitas"
@@ -183,14 +172,38 @@
 					data-markdown><script type="text/template">
 					## Module Loader
 
+					From [js-loaders](https://github.com/jorendorff/js-loaders):
+
+					* normalize - convert to absolute IDs
+					* locate - ID-to-URL/path
+					* fetch - get the contents of URL/path
+					* translate - convert source to JS
+					* instantiate - custom module translation
+
+					AMD loader plugins:
+
 					* normalize
-					* resolve
-					* fetch
-					* translate
-					* link and execute
+					* load - locate, fetch, translate, instantiate
+				</script></section>
 
-					AMD: normalize, load(resolve, fetch, translate, execute)
+				<style>html.state3 body { background:url("images/img13.jpg");}</style>
+				<section data-state="state3"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305279096/
+"
+					data-markdown><script type="text/template">
+					## The Frontiers
 
+					Up to JS environments (browser makers, us):
+
+					* ID normalization: './'
+					* Declarative loader config
+					* Inline module syntax (<module>, Loader.instantiate)
+
+					Up to us:
+
+					* Bridging worlds, AMD/Node
+					* Project layout/package managers
 				</script></section>
 
 				<style>html.state6 body { background:url("images/img14.jpg");}</style>
@@ -198,24 +211,10 @@
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
 					data-markdown><script type="text/template">
-					## Declare
+					## ID normalization
 
-					```javascript
-					// node
-					var x = require('x');
-
-					exports.y = ...
-					// or
-					module.exports = function() {}
-
-					// AMD
-					define(function(require, exports, module) {
-					  var x = require('x');
-
-					  exports.y = ...
-					  // or
-					  return function() {};
-					});
+					* Does './', '../' mean anything?
+					* Allow URLs? Maybe not.
 					```
 				</script></section>
 
@@ -223,20 +222,25 @@
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
 					data-markdown><script type="text/template">
-					## Difference
+					## Declarative loader config
 
-					* Node: imperative, runs at point of first require
-					* AMD: declarative, runs before factory function
+					* [AMD has a set](https://github.com/amdjs/amdjs-api/wiki/Common-Config)
+					* paths, map, config, packages(?)
+					* shim - a sham?
 				</script></section>
 
 				<section data-state="state6"
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
 					data-markdown><script type="text/template">
-					## Consequences
+					# Inline module syntax
 
-					* Node: sync require not so great in browser
-					* AMD: weaker circular ref support, function wrapping
+					`module 'id' {}` would be sweet.
+
+					Alas, baby steps. Dragons. Patience.
+
+					* `<module>`: I will try to wait for `module 'id'`
+					* Loader.instantiate
 				</script></section>
 
 
@@ -245,173 +249,33 @@
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8304189741/"
 					data-markdown><script type="text/template">
-					## Reference
+					## Bridging worlds, AMD
 
-					```javascript
-					// node
-					// static
-					var x = require('x');
+					* ES6->AMD:
+					* AMD->ES6: Command line tool. Trivial transform.
+					* ES6+AMD on ES6: AMD declarative config, loader.instantiate hook
+				</script></section>
 
-					// dynamic
-					var z = require(something + '/z');
+				<style>html.state7 body { background:url("images/img15.jpg");}</style>
+				<section data-state="state7"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8304189741/"
+					data-markdown><script type="text/template">
+					## Bridging worlds, Node
 
-					// AMD
-					define(function(require, exports, module) {
-					  // static
-					  var x = require('x');
-
-					  // dynamic
-					  require([something + '/z'], function(z) {
-
-					  });
-					});
-					```
+					* Loader hooks
 				</script></section>
 
 				<section data-state="state7"
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8304189741/"
 					data-markdown><script type="text/template">
-					## Difference
+					## Project Layout
 
-					* Node: cannot solve generically in browser case
-				</script></section>
+					Default ID-to-path
 
+					`baseURL + moduleID + '.js'`
 
-				<style>html.state8 body { background:url("images/img17.jpg");}</style>
-				<section data-state="state8"
-					data-attr-desc="Marcos Teixeira de Freitas"
-					data-attr="http://www.flickr.com/photos/imortal/8304182097/"
-					data-markdown><script type="text/template">
-					## ES: Declare and Reference
-
-					```javascript
-					// static
-					// import of default export
-					import x from 'x';
-
-					// non-default import from 'lib': `export let w = 3`;
-					import { w } from 'lib';
-
-					// named export
-					export let y = ...;
-					// and/or
-					// default export
-					export default function() {};
-
-					// dynamic
-					System.import(something + '/z', function(z) {
-					});
-					```
-				</script></section>
-
-				<section data-state="state8"
-					data-attr-desc="Marcos Teixeira de Freitas"
-					data-attr="http://www.flickr.com/photos/imortal/8304182097/"
-					data-markdown><script type="text/template">
-					## Properties
-
-					* Similar to AMD resolution, but no function wrapper
-					* import/export top level, no nesting
-					* import/export are mutable slots
-					* Solves cycle support, via new syntax
-					* Dynamic resolution in runtime callback API
-				</script></section>
-
-				<style>html.state9 body { background:url("images/img18.jpg");}</style>
-				<section data-state="state9"
-					data-attr-desc="Marcos Teixeira de Freitas"
-					data-attr="http://www.flickr.com/photos/imortal/8305228308/"
-					data-markdown><script type="text/template">
-					## Normalize
-
-					```javascript
-					// Module 'a/b' asks for ./c
-					import c from './c'
-					```
-
-					* Node: path-based: relative to a/b's .js file
-					* AMD: module ID based: relative to 'a/b' module ID
-					* ES: Pluggable, likely module ID based by default
-				</script></section>
-
-				<style>html.state10 body { background:url("images/img19.jpg");}</style>
-				<section data-state="state10"
-					data-attr-desc="Marcos Teixeira de Freitas"
-					data-attr="http://www.flickr.com/photos/imortal/8305223894/"
-					data-markdown><script type="text/template">
-					## Resolve: ID-to-path
-
-					```javascript
-					// convert 'a/b/c' to path on disk
-					```
-
-					* Node: nested multiple IO node_modules
-					* AMD:  `baseURL + moduleID + '.js'`, [declarative config](https://github.com/amdjs/amdjs-api/wiki/Common-Config)
-					* ES: Likely `baseURL + moduleID + '.js'` by default,
-					  controlled by JS env. Has loader hook.
-					* ES in browser: could have declarative config?
-				</script></section>
-
-			<style>html.state11 body { background:url("images/img20.jpg");}</style>
-				<section data-state="state11"
-					data-attr-desc="Marcos Teixeira de Freitas"
-					data-attr="http://www.flickr.com/photos/imortal/8304173391/"
-					data-markdown><script type="text/template">
-					## Fetch: get file contents
-
-					* Node: synchronous IO
-					* AMD:  async, usually network IO.
-					* ES: async by default. Loader hook assumes async.
-				</script></section>
-
-			<style>html.state11b body { background:url("images/img21.jpg");}</style>
-				<section data-state="state11b"
-					data-attr-desc="Marcos Teixeira de Freitas"
-					data-attr="http://www.flickr.com/photos/imortal/8305337676/"
-					data-markdown><script type="text/template">
-					## Translate
-
-					* Node: require('module')._extensions['.ext']
-					* AMD:  loader plugins: 'text!a.html', loader hooks
-					* ES: Imperative loader hook
-				</script></section>
-
-			<style>html.state12 body { background:url("images/img10.jpg");}</style>
-
-				<section data-state="state12"
-					data-attr-desc="Marcos Teixeira de Freitas"
-					data-attr="http://www.flickr.com/photos/imortal/8305281222/"
-					data-markdown><script type="text/template">
-					## Link / Execute
-
-					* Node: usual JS evaluation
-					* AMD:  usual JS evaluation
-					* ES: linking, check import/export names, then eval
-				</script></section>
-
-			<style>html.state13 body { background:url("images/img11.jpg");}</style>
-				<section data-state="state13"
-					data-attr-desc="Marcos Teixeira de Freitas"
-					data-attr="http://www.flickr.com/photos/imortal/8305226012/"
-					data-markdown><script type="text/template">
-					## Migration patterns
-
-					* Node: use ES Module Loader hooks for backcompat, ID-to-path resolution
-					* AMD: likely small script for loader plugin syntax, adapter old API. Browser env might have good declartive config?
-					* ES: module inlining still funky
-				</script></section>
-
-			<style>html.state14 body { background:url("images/img14.jpg");}</style>
-				<section data-state="state14"
-					data-attr-desc="Marcos Teixeira de Freitas"
-					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
-					data-markdown><script type="text/template">
-					## What can we do now?
-
-					* ID resolution
-					* Make it easy: `baseURL + moduleID + '.js'`
-					* Better package managers
 				</script></section>
 
 				<section data-state="state14"
@@ -420,7 +284,7 @@
 					data-markdown><script type="text/template">
 					## Hey, package managers
 
-					* Favor ease of runtime use over your use
+					* Favor runtime use over your use
 					* Single file deps at `baseURL + moduleID + '.js'`
 					* Your metadata in app `package.json` or `.metadata` dir
 					* Front end: commit app-level deps.
@@ -448,13 +312,21 @@
 					data-attr-desc="Marcos Teixeira de Freitas"
 					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
 					data-markdown><script type="text/template">
+					## NPM adaptation
+
+					* [notobo]()
+				</script></section>
+
+				<section data-state="state14"
+					data-attr-desc="Marcos Teixeira de Freitas"
+					data-attr="http://www.flickr.com/photos/imortal/8305239974/"
+					data-markdown><script type="text/template">
 					## Example app layout
 
 					* [volojs/create-template](https://github.com/volojs/create-template)
 					* [volo](http://volojs.org)
 					* [front end library best practices](https://github.com/volojs/volo/wiki/Library-best-practices)
 				</script></section>
--->
 			</div>
 
 		</div>
