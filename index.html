@@ -75,6 +75,9 @@
 			}
 		</style>
 
+<!-- Resolution target: 1920x1080 2500 x 1406
+.5625 -->
+
 
 		<div class="reveal">
 
@@ -84,7 +87,7 @@
 
 				<style>
 					html.state1 body {
-						background:url("images/shutterstock_93628708.jpg");
+						background:url("images/shutterstock_93628708_small.jpg");
 					}
 				</style>
 				<section data-state="state1"
@@ -107,7 +110,7 @@
 					* Just a simple plumber
 				</script></section>
 
-				<style>html.state2 body { background:url("images/shutterstock_82996114.jpg")  black;}</style>
+				<style>html.state2 body { background:url("images/shutterstock_82996114_small.jpg")  black;}</style>
 				<section data-state="state2"
 					data-markdown><script type="text/template">
 					## The Known Lands
@@ -116,7 +119,6 @@
 
 					* [Module Syntax](http://wiki.ecmascript.org/doku.php?id=harmony:modules)
 					* [Module Loaders](http://wiki.ecmascript.org/doku.php?id=harmony:module_loaders)
-					* [js-loaders](https://github.com/jorendorff/js-loaders)
 				</script></section>
 
 				<section data-state="state2"
@@ -149,13 +151,13 @@
 					data-markdown><script type="text/template">
 					## Module Loader
 
-					From [js-loaders](https://github.com/jorendorff/js-loaders):
+					From [js-loaders](https://github.com/jorendorff/js-loaders): **System.import('adventure')**
 
-					* **normalize** - IDs to normalized form
-					* **locate** - ID to URL
-					* **fetch** - get the source at URL
-					* **translate** - convert source to JS
-					* **instantiate** - custom module translation
+					* **System.normalize** - IDs to normalized form
+					* **System.locate** - ID to URL
+					* **System.fetch** - get the source at URL
+					* **System.translate** - convert source to JS
+					* **System.instantiate** - custom module translation
 
 					[AMD loader plugins](http://requirejs.org/docs/plugins.html):
 
@@ -171,7 +173,7 @@
 					* Our apps
 				</script></section>
 
-				<style>html.state3 body { background:url("images/shutterstock_152099564.jpg")  black;}</style>
+				<style>html.state3 body { background:url("images/shutterstock_152099564_small.jpg")  black;}</style>
 				<section data-state="state3"
 					data-markdown><script type="text/template">
 					## JS environments
@@ -218,10 +220,9 @@
 					* `<module>`, `<script type="module">`
 					* > Hope to avoid, use loader
 					* `loader.define(id, srcString)`
-					* > I need a shower
 				</script></section>
 
-				<style>html.state4 body { background:url("images/shutterstock_131897297.jpg") black;}</style>
+				<style>html.state4 body { background:url("images/shutterstock_131897297_small.jpg") black;}</style>
 				<section data-state="state4"
 					data-markdown><script type="text/template">
 					## Our apps
@@ -235,8 +236,7 @@
 					data-markdown><script type="text/template">
 					## Bridging worlds, AMD
 
-					* **ES6->AMD**: [es6-module-transpiler](https://github.com/square/es6-module-transpiler)
-					* > caveat emptor
+					* **ES6->AMD**: [es6-module-transpiler](https://github.com/square/es6-module-transpiler) *caveat emptor*
 					* **AMD->ES6**: Command line tool, trivial transform
 					* **Combo**: Bootstrap: AMD-style config, plugins, adapter
 					* > coming soon
@@ -263,7 +263,7 @@
 					data-markdown><script type="text/template">
 					## Package managers
 
-					* Favor run time over install time
+					* Local vs repo name: 'jquery' -> 'zepto', branches, forks
 					* Single file deps: `baseURL + moduleID + '.js'`
 					* Your metadata in app `package.json` or `.metadata` dir
 					* Front end: commit app-level deps.
@@ -285,7 +285,7 @@
 					```
 				</script></section>
 
-				<style>html.state5 body { background:url("images/shutterstock_134936780.jpg") black;}</style>
+				<style>html.state5 body { background:url("images/shutterstock_134936780_small.jpg") black;}</style>
 				<section data-state="state5"
 					data-markdown><script type="text/template">
 					## NPM Shim
