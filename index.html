@@ -190,9 +190,9 @@
 					data-markdown><script type="text/template">
 					## ID normalization
 
-					* `./`
-					* `../`
+					* `./ and ../`
 					* Allow URLs? Maybe not.
+					* Loader plugin syntax? `'text!template.html'`
 
 				</script></section>
 
@@ -202,7 +202,7 @@
 
 					* [AMD has a set](https://github.com/amdjs/amdjs-api/wiki/Common-Config)
 					* paths, map, config [maybe not packages?]
-					* shim - no more? LEGACY 4EVAR
+					* shim - LEGACY 4EVAR?
 				</script></section>
 
 				<section data-state="state3"
@@ -256,8 +256,61 @@
 					## Project Layout
 
 					* `baseURL + moduleID + '.js'`
-					* `baseURL + moduleID + '.js'`
-					* `baseURL + moduleID + '.js'`
+					* `import x from 'x'` -> `baseURL + 'x.js'`
+				</script></section>
+<!--
+				<section data-state="state4"
+					data-markdown><script type="text/template">
+					## [Conventional projects](https://github.com/volojs/create-template)
+
+					```javascript
+					* index.html
+					* app/ -> main.js, view.js
+					* lib/ -> jquery.js, underscore.js
+					* app.js:
+					```
+				</script></section>
+-->
+				<section data-state="state4"
+					data-markdown><script type="text/template">
+					## [Convention](https://github.com/volojs/create-template)
+
+					```javascript
+					* index.html
+					* app/ -> main.js, view.js
+					* lib/ -> jquery.js, underscore.js
+					* app.js:
+
+					requirejs.config({
+					    baseUrl: 'lib',
+					    paths: {
+					        app: '../app'
+					    }
+					});
+
+					// Start loading app.
+					requirejs(['app/main']);
+
+					// app/main uses relative IDs for other
+					// app modules: './view'
+					```
+				</script></section>
+
+				<section data-state="state4"
+					data-markdown><script type="text/template">
+					## [Convention](https://github.com/volojs/create-template)
+
+					```javascript
+					//WARNING: SPECULATIVE
+					System.config({
+						baseUrl: 'lib',
+						paths: {
+							app: '../app'
+						}
+					});
+
+					System.import('app/main');
+					```
 				</script></section>
 
 				<section data-state="state4"
@@ -286,6 +339,7 @@
 					```
 				</script></section>
 
+<!--
 				<style>html.state5 body { background-image: url("images/shutterstock_134936780_small.jpg");}</style>
 				<section data-state="state5"
 					data-markdown><script type="text/template">
@@ -302,11 +356,14 @@
 					* [volo](http://volojs.org)
 					* [front end library best practices](https://github.com/volojs/volo/wiki/Library-best-practices)
 				</script></section>
-
-
+-->
 				<section data-state="state1"
 					data-markdown><script type="text/template">
+					# Fin
 
+					* ES6: declaration and loader basics looking good
+					* Next: declarative config, inlining, loader plugins
+					* `baseURL + moduleID + '.js'`
 				</script></section>
 			</div>
 
