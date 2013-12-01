@@ -108,7 +108,6 @@
 
 					* Not on TC-39, not speaking for Mozilla
 					* My origins: RequireJS, AMD
-					* Just a simple plumber
 				</script></section>
 
 				<style>html.state2 body { background-image: url("images/shutterstock_82996114_small.jpg");}</style>
@@ -180,10 +179,6 @@
 					## JS environments
 
 					Browser makers, us
-
-					* ID normalization: './'
-					* Declarative loader config
-					* Inline module syntax (&lt;module&gt;, loader.define())
 				</script></section>
 
 				<section data-state="state3"
@@ -258,19 +253,7 @@
 					* `baseURL + moduleID + '.js'`
 					* `import x from 'x'` -> `baseURL + 'x.js'`
 				</script></section>
-<!--
-				<section data-state="state4"
-					data-markdown><script type="text/template">
-					## [Conventional projects](https://github.com/volojs/create-template)
 
-					```javascript
-					* index.html
-					* app/ -> main.js, view.js
-					* lib/ -> jquery.js, underscore.js
-					* app.js:
-					```
-				</script></section>
--->
 				<section data-state="state4"
 					data-markdown><script type="text/template">
 					## [Convention](https://github.com/volojs/create-template)
@@ -298,29 +281,11 @@
 
 				<section data-state="state4"
 					data-markdown><script type="text/template">
-					## [Convention](https://github.com/volojs/create-template)
-
-					```javascript
-					//WARNING: SPECULATIVE
-					System.config({
-						baseUrl: 'lib',
-						paths: {
-							app: '../app'
-						}
-					});
-
-					System.import('app/main');
-					```
-				</script></section>
-
-				<section data-state="state4"
-					data-markdown><script type="text/template">
 					## Package managers
 
-					* Local vs repo name: 'jquery' -> 'zepto', branches, forks
 					* Single file deps: `baseURL + moduleID + '.js'`
 					* Your metadata in app `package.json` or `.metadata` dir
-					* Front end: commit app-level deps.
+					* Local vs repo name: 'jquery' -> 'zepto', branches, forks
 				</script></section>
 
 				<section data-state="state4"
@@ -335,28 +300,11 @@
 					// AMD
 					define(['x/main'], function(x) {return x});
 					// ES
-					export default from 'x/main'; // maybe?
+					export default from 'x/main'; //
 					```
 				</script></section>
 
-<!--
-				<style>html.state5 body { background-image: url("images/shutterstock_134936780_small.jpg");}</style>
-				<section data-state="state5"
-					data-markdown><script type="text/template">
-					## NPM Shim
 
-					* [notobo]()
-				</script></section>
-
-				<section data-state="state5"
-					data-markdown><script type="text/template">
-					## Example app layout
-
-					* [volojs/create-template](https://github.com/volojs/create-template)
-					* [volo](http://volojs.org)
-					* [front end library best practices](https://github.com/volojs/volo/wiki/Library-best-practices)
-				</script></section>
--->
 				<section data-state="state1"
 					data-markdown><script type="text/template">
 					# Fin
@@ -364,6 +312,8 @@
 					* ES6: declaration and loader basics looking good
 					* Next: declarative config, inlining, loader plugins
 					* `baseURL + moduleID + '.js'`
+
+					[http://jrburke.com/talks/dotjs2013](http://jrburke.com/talks/dotjs2013)
 				</script></section>
 			</div>
 
