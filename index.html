@@ -196,7 +196,7 @@
 					## Declarative loader config
 
 					* [AMD has a set](https://github.com/amdjs/amdjs-api/wiki/Common-Config)
-					* paths, map, module config [maybe not packages?]
+					* paths, map, module config [not packages]
 					* shim - LEGACY 4EVAR?
 				</script></section>
 
@@ -232,10 +232,9 @@
 					data-markdown><script type="text/template">
 					## Bridging worlds, AMD
 
-					* **ES6->AMD**: [es6-module-transpiler](https://github.com/square/es6-module-transpiler) *caveat emptor*
+					* **ES6->AMD**: [es6-module-transpiler](https://github.com/square/es6-module-transpiler)
 					* **AMD->ES6**: Command line tool, trivial transform
 					* **Combo**: Bootstrap: AMD-style config, plugins, adapter
-					* > coming soon
 				</script></section>
 
 				<section data-state="state4"
@@ -283,14 +282,17 @@
 					data-markdown><script type="text/template">
 					## Package managers
 
+					`baseURL + moduleID + '.js'`
+
 					* Single file deps: `baseURL + moduleID + '.js'`
 					* Your metadata in app `package.json` or `.metadata` dir
-					* Local vs repo name: 'jquery' -> 'zepto', branches, forks
 				</script></section>
 
 				<section data-state="state4"
 					data-markdown><script type="text/template">
-					## Packages still OK
+					## Package managers
+
+					Packages directories still OK
 
 					* Adapter module at `baseURL + moduleID + '.js'`
 
@@ -303,6 +305,15 @@
 					export default from 'x/main'; //
 					```
 				</script></section>
+
+				<section data-state="state4"
+					data-markdown><script type="text/template">
+					## Package managers
+
+					* Local vs repo name: 'jquery' -> 'zepto', branches, forks
+				</script></section>
+
+
 
 
 				<section data-state="state1"
